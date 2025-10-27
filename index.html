@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ইমরান এর শপ - আপনার বিশ্বস্ত অনলাইন শপ</title>
+    <title>ইমরান এর অনলাইন শপ</title>
     <style>
         @import url('https://fonts.maateen.me/solaiman-lipi/font.css');
         
@@ -55,12 +55,11 @@
             padding: 20px;
             text-align: center;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
         
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
         }
         
         .product-image {
@@ -81,7 +80,6 @@
         .product-description {
             color: #7f8c8d;
             margin-bottom: 10px;
-            font-size: 0.9em;
         }
         
         .product-price {
@@ -100,8 +98,8 @@
             cursor: pointer;
             font-size: 1em;
             font-weight: bold;
-            transition: all 0.3s ease;
             width: 100%;
+            transition: all 0.3s ease;
         }
         
         .order-btn:hover {
@@ -115,21 +113,6 @@
             background: white;
             border-radius: 15px;
             margin-top: 40px;
-        }
-        
-        .contact-info {
-            color: #7f8c8d;
-            margin-top: 15px;
-        }
-        
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
-            text-align: center;
         }
         
         /* মডাল স্টাইল */
@@ -160,10 +143,6 @@
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
-        }
-        
-        .close:hover {
-            color: #000;
         }
         
         .form-group {
@@ -209,6 +188,24 @@
         .submit-btn:hover {
             background: linear-gradient(135deg, #2980b9, #3498db);
             transform: scale(1.02);
+        }
+        
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            color: #3498db;
+            font-size: 1.1em;
         }
 
         @media (max-width: 768px) {
@@ -266,7 +263,7 @@
                 <button class="order-btn" onclick="openOrderModal('লেদার ওয়ালেট', 450)">অর্ডার করুন</button>
             </div>
 
-            <!-- বাকি ৭টি প্রোডাক্ট একইভাবে যোগ করুন -->
+            <!-- প্রোডাক্ট ৪ -->
             <div class="product-card">
                 <img src="https://via.placeholder.com/300x200/f39c12/ffffff?text=পাওয়ার+ব্যাংক" alt="পাওয়ার ব্যাংক" class="product-image">
                 <h3 class="product-title">পাওয়ার ব্যাংক</h3>
@@ -275,6 +272,7 @@
                 <button class="order-btn" onclick="openOrderModal('পাওয়ার ব্যাংক', 800)">অর্ডার করুন</button>
             </div>
 
+            <!-- প্রোডাক্ট ৫ -->
             <div class="product-card">
                 <img src="https://via.placeholder.com/300x200/9b59b6/ffffff?text=সানগ্লাস" alt="সানগ্লাস" class="product-image">
                 <h3 class="product-title">সানগ্লাস</h3>
@@ -282,6 +280,11 @@
                 <div class="product-price">৳ ৩৫০</div>
                 <button class="order-btn" onclick="openOrderModal('সানগ্লাস', 350)">অর্ডার করুন</button>
             </div>
+        </div>
+
+        <!-- লোডিং -->
+        <div id="loading" class="loading">
+            ⏳ অর্ডার পাঠানো হচ্ছে... দয়া করে অপেক্ষা করুন
         </div>
 
         <!-- সাকসেস মেসেজ -->
@@ -295,7 +298,7 @@
                 <span class="close" onclick="closeOrderModal()">&times;</span>
                 <h2 style="text-align: center; margin-bottom: 20px; color: #2c3e50;">অর্ডার ফর্ম</h2>
                 
-                <form onsubmit="submitOrder(event)">
+                <form id="orderForm">
                     <input type="hidden" id="selectedProduct">
                     <input type="hidden" id="selectedPrice">
                     
@@ -329,7 +332,9 @@
                         <p id="orderSummary" style="margin: 0; color: #7f8c8d;"></p>
                     </div>
                     
-                    <button type="submit" class="submit-btn">📧 ইমেইল দ্বারা অর্ডার সম্পন্ন করুন</button>
+                    <button type="button" class="submit-btn" onclick="submitOrder()">
+                        📧 সরাসরি অর্ডার সম্পন্ন করুন
+                    </button>
                 </form>
             </div>
         </div>
@@ -338,8 +343,8 @@
         <footer class="footer">
             <h3>যোগাযোগ করুন</h3>
             <div class="contact-info">
-                <p>📞 ফোন: 01781674070</p>
-                <p>📧 ইমেইল: iimranhossenmaruf@gmail.com</p>
+                <p>📞 ফোন: ০১৭XXXXXXXX</p>
+                <p>📧 ইমেইল: youremail@gmail.com</p>
                 <p>🕒 সময়: সকাল ৯টা - রাত ১০টা</p>
                 <p>🚚 ডেলিভারী: সারাদেশে</p>
             </div>
@@ -347,9 +352,12 @@
     </div>
 
     <script>
-        // বর্তমান নির্বাচিত প্রোডাক্ট
+        // আপনার Formspree ID - এটা ব্যবহার করুন
+        const FORMSPREE_FORM_ID = "xnnonydb";
+        
         let currentProduct = '';
         let currentPrice = 0;
+
         // মডাল ওপেন ফাংশন
         function openOrderModal(productName, price) {
             currentProduct = productName;
@@ -374,48 +382,58 @@
         }
 
         // অর্ডার সাবমিট ফাংশন
-        function submitOrder(event) {
-            event.preventDefault();
-            
+        function submitOrder() {
             const customerName = document.getElementById('customerName').value;
             const customerPhone = document.getElementById('customerPhone').value;
             const customerEmail = document.getElementById('customerEmail').value;
             const customerAddress = document.getElementById('customerAddress').value;
             const customerNote = document.getElementById('customerNote').value;
             
-            // ইমেইল বডি তৈরি
-            const emailSubject = `নতুন অর্ডার - ${currentProduct}`;
-            const emailBody = `
-🛍️ *নতুন অর্ডার এর বিশদ বিবরণ*
+            // ভ্যালিডেশন
+            if (!customerName || !customerPhone || !customerAddress) {
+                alert('দয়া করে নাম, ফোন নম্বর এবং ঠিকানা প্রদান করুন');
+                return;
+            }
 
-📦 *পণ্যের নাম:* ${currentProduct}
-💰 *দাম:* ৳ ${currentPrice}
-👤 *গ্রাহকের নাম:* ${customerName}
-📞 *ফোন নম্বর:* ${customerPhone}
-📧 *ইমেইল:* ${customerEmail || 'না দেয়া'}
-🏠 *ঠিকানা:* ${customerAddress}
-📝 *বিশেষ নোট:* ${customerNote || 'কোন নোট নেই'}
-⏰ *অর্ডারের তারিখ:* ${new Date().toLocaleString('bn-BD')}
-
-*দ্রুত গ্রাহকের সাথে যোগাযোগ করে অর্ডার কনফার্ম করুন!*
-
----
-ইমরান এর অনলাইন শপ
-ফোন: ০১৭XXXXXXXX
-            `.trim();
+            // লোডিং শো করুন
+            document.getElementById('loading').style.display = 'block';
             
-            // ইমেইল URL তৈরি
-            const yourEmail = 'iimranhossenmaruf@gmail.com'; // 🔁 এইটা পরিবর্তন করুন
-            const mailtoLink = `mailto:${yourEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
+            // Formspree এর মাধ্যমে ইমেইল পাঠান
+            const formData = new FormData();
+            formData.append('product', currentProduct);
+            formData.append('price', `৳ ${currentPrice}`);
+            formData.append('name', customerName);
+            formData.append('phone', customerPhone);
+            formData.append('email', customerEmail || 'না দেয়া');
+            formData.append('address', customerAddress);
+            formData.append('note', customerNote || 'কোন নোট নেই');
+            formData.append('_subject', `🛍️ নতুন অর্ডার - ${currentProduct}`);
+            formData.append('_replyto', customerEmail || 'no-reply@example.com');
             
-            // ইমেইল ক্লায়েন্ট ওপেন
-            window.location.href = mailtoLink;
-            
-            // সাকসেস মেসেজ দেখান
-            showSuccessMessage(customerName, customerPhone);
-            
-            // মডাল বন্ধ করুন
-            closeOrderModal();
+            fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                document.getElementById('loading').style.display = 'none';
+                
+                if (response.ok) {
+                    // সাকসেস মেসেজ
+                    showSuccessMessage(customerName, customerPhone);
+                    closeOrderModal();
+                    document.getElementById('orderForm').reset();
+                } else {
+                    alert('অর্ডার পাঠানো যায়নি। দয়া করে আবার চেষ্টা করুন।');
+                }
+            })
+            .catch(error => {
+                document.getElementById('loading').style.display = 'none';
+                alert('নেটওয়ার্ক সমস্যা। দয়া করে আবার চেষ্টা করুন।');
+                console.error('Error:', error);
+            });
         }
 
         // সাকসেস মেসেজ ফাংশন
