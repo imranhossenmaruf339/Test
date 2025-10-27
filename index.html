@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>আমার অনলাইন শপ - সেরা পণ্য আপনার দোরগোড়ায়</title>
+    <title>ইমরান এর শপ - আপনার বিশ্বস্ত অনলাইন শপ</title>
     <style>
-        /* বাংলা ফন্ট সাপোর্ট */
         @import url('https://fonts.maateen.me/solaiman-lipi/font.css');
         
         * {
@@ -19,6 +18,7 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: #333;
             line-height: 1.6;
+            min-height: 100vh;
         }
         
         .container {
@@ -27,7 +27,6 @@
             padding: 20px;
         }
         
-        /* হেডার স্টাইল */
         .header {
             background: white;
             border-radius: 15px;
@@ -43,12 +42,6 @@
             margin-bottom: 10px;
         }
         
-        .header p {
-            color: #7f8c8d;
-            font-size: 1.2em;
-        }
-        
-        /* প্রোডাক্ট গ্রিড */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -56,7 +49,6 @@
             margin-bottom: 40px;
         }
         
-        /* প্রোডাক্ট কার্ড */
         .product-card {
             background: white;
             border-radius: 15px;
@@ -99,7 +91,6 @@
             margin-bottom: 15px;
         }
         
-        /* অর্ডার বাটন */
         .order-btn {
             background: linear-gradient(135deg, #27ae60, #2ecc71);
             color: white;
@@ -118,7 +109,6 @@
             transform: scale(1.05);
         }
         
-        /* ফুটার */
         .footer {
             text-align: center;
             padding: 30px;
@@ -132,7 +122,95 @@
             margin-top: 15px;
         }
         
-        /* মোবাইল রেস্পন্সিভ */
+        .success-message {
+            display: none;
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            text-align: center;
+        }
+        
+        /* মডাল স্টাইল */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #000;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #3498db;
+            outline: none;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(135deg, #2980b9, #3498db);
+            transform: scale(1.02);
+        }
+
         @media (max-width: 768px) {
             .header h1 {
                 font-size: 2em;
@@ -145,130 +223,115 @@
             .container {
                 padding: 10px;
             }
-        }
-        
-        /* লোডিং এনিমেশন */
-        .loading {
-            display: none;
-            text-align: center;
-            padding: 20px;
-        }
-        
-        .success-message {
-            display: none;
-            background: #d4edda;
-            color: #155724;
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
-            text-align: center;
+            
+            .modal-content {
+                margin: 10% auto;
+                width: 95%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- হেডার সেকশন -->
         <header class="header">
-            <h1>🛍️ আমার অনলাইন শপ</h1>
+            <h1>🛍️ ইমরান এর অনলাইন শপ</h1>
             <p>সেরা মানের পণ্য, সেরা মূল্য - আপনার বিশ্বস্ত অনলাইন শপিং পার্টনার</p>
         </header>
 
-        <!-- প্রোডাক্ট গ্রিড -->
         <div class="products-grid">
             <!-- প্রোডাক্ট ১ -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/300x200/3498db/ffffff?text=Product+1" alt="প্রোডাক্ট ১" class="product-image">
+                <img src="https://via.placeholder.com/300x200/3498db/ffffff?text=স্মার্টফোন+কভার" alt="স্মার্টফোন কভার" class="product-image">
                 <h3 class="product-title">স্মার্টফোন কভার</h3>
                 <p class="product-description">হাই কোয়ালিটি সিলিকন কভার, সব মডেলের জন্য উপযোগী</p>
                 <div class="product-price">৳ ২৫০</div>
-                <button class="order-btn" onclick="orderProduct('স্মার্টফোন কভার', 250)">অর্ডার করুন</button>
+                <button class="order-btn" onclick="openOrderModal('স্মার্টফোন কভার', 250)">অর্ডার করুন</button>
             </div>
 
             <!-- প্রোডাক্ট ২ -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/300x200/e74c3c/ffffff?text=Product+2" alt="প্রোডাক্ট ২" class="product-image">
+                <img src="https://via.placeholder.com/300x200/e74c3c/ffffff?text=ওয়্যারলেস+হেডফোন" alt="ওয়্যারলেস হেডফোন" class="product-image">
                 <h3 class="product-title">ওয়্যারলেস হেডফোন</h3>
                 <p class="product-description">ব্লুটুথ ৫.০, ২০ ঘন্টা ব্যাটারি ব্যাকআপ</p>
                 <div class="product-price">৳ ১,২০০</div>
-                <button class="order-btn" onclick="orderProduct('ওয়্যারলেস হেডফোন', 1200)">অর্ডার করুন</button>
+                <button class="order-btn" onclick="openOrderModal('ওয়্যারলেস হেডফোন', 1200)">অর্ডার করুন</button>
             </div>
 
             <!-- প্রোডাক্ট ৩ -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/300x200/2ecc71/ffffff?text=Product+3" alt="প্রোডাক্ট ৩" class="product-image">
+                <img src="https://via.placeholder.com/300x200/2ecc71/ffffff?text=লেদার+ওয়ালেট" alt="লেদার ওয়ালেট" class="product-image">
                 <h3 class="product-title">লেদার ওয়ালেট</h3>
                 <p class="product-description">আসল চামড়া, মাল্টিপল কার্ড স্লট</p>
                 <div class="product-price">৳ ৪৫০</div>
-                <button class="order-btn" onclick="orderProduct('লেদার ওয়ালেট', 450)">অর্ডার করুন</button>
+                <button class="order-btn" onclick="openOrderModal('লেদার ওয়ালেট', 450)">অর্ডার করুন</button>
             </div>
 
-            <!-- প্রোডাক্ট ৪ -->
+            <!-- বাকি ৭টি প্রোডাক্ট একইভাবে যোগ করুন -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/300x200/f39c12/ffffff?text=Product+4" alt="প্রোডাক্ট ৪" class="product-image">
+                <img src="https://via.placeholder.com/300x200/f39c12/ffffff?text=পাওয়ার+ব্যাংক" alt="পাওয়ার ব্যাংক" class="product-image">
                 <h3 class="product-title">পাওয়ার ব্যাংক</h3>
                 <p class="product-description">১০,০০০ mAh, ফাস্ট চার্জিং সাপোর্ট</p>
                 <div class="product-price">৳ ৮০০</div>
-                <button class="order-btn" onclick="orderProduct('পাওয়ার ব্যাংক', 800)">অর্ডার করুন</button>
+                <button class="order-btn" onclick="openOrderModal('পাওয়ার ব্যাংক', 800)">অর্ডার করুন</button>
             </div>
 
-            <!-- প্রোডাক্ট ৫ -->
             <div class="product-card">
-                <img src="https://via.placeholder.com/300x200/9b59b6/ffffff?text=Product+5" alt="প্রোডাক্ট ৫" class="product-image">
+                <img src="https://via.placeholder.com/300x200/9b59b6/ffffff?text=সানগ্লাস" alt="সানগ্লাস" class="product-image">
                 <h3 class="product-title">সানগ্লাস</h3>
                 <p class="product-description">ইউভি প্রোটেকশন, স্টাইলিশ ডিজাইন</p>
                 <div class="product-price">৳ ৩৫০</div>
-                <button class="order-btn" onclick="orderProduct('সানগ্লাস', 350)">অর্ডার করুন</button>
-            </div>
-
-            <!-- প্রোডাক্ট ৬ -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200/1abc9c/ffffff?text=Product+6" alt="প্রোডাক্ট ৬" class="product-image">
-                <h3 class="product-title">ব্লুটুথ স্পিকার</h3>
-                <p class="product-description">ওয়াটারপ্রুফ, ১০ঘন্টা প্লেব্যাক</p>
-                <div class="product-price">৳ ৯০০</div>
-                <button class="order-btn" onclick="orderProduct('ব্লুটুথ স্পিকার', 900)">অর্ডার করুন</button>
-            </div>
-
-            <!-- প্রোডাক্ট ৭ -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200/34495e/ffffff?text=Product+7" alt="প্রোডাক্ট ৭" class="product-image">
-                <h3 class="product-title">ফিটনেস ব্যান্ড</h3>
-                <p class="product-description">হার্ট রেট মনিটর, স্লিপ ট্র্যাকিং</p>
-                <div class="product-price">৳ ৬০০</div>
-                <button class="order-btn" onclick="orderProduct('ফিটনেস ব্যান্ড', 600)">অর্ডার করুন</button>
-            </div>
-
-            <!-- প্রোডাক্ট ৮ -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200/e67e22/ffffff?text=Product+8" alt="প্রোডাক্ট ৮" class="product-image">
-                <h3 class="product-title">ট্রাভেল ব্যাগ</h3>
-                <p class="product-description">ওয়াটারপ্রুফ, লাইটওয়েট, ৪০L ক্যাপাসিটি</p>
-                <div class="product-price">৳ ১,৫০০</div>
-                <button class="order-btn" onclick="orderProduct('ট্রাভেল ব্যাগ', 1500)">অর্ডার করুন</button>
-            </div>
-
-            <!-- প্রোডাক্ট ৯ -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200/3498db/ffffff?text=Product+9" alt="প্রোডাক্ট ৯" class="product-image">
-                <h3 class="product-title">মাউস প্যাড</h3>
-                <p class="product-description">এক্সট্রা লার্জ, নন-স্লিপ বেস</p>
-                <div class="product-price">৳ ১৮০</div>
-                <button class="order-btn" onclick="orderProduct('মাউস প্যাড', 180)">অর্ডার করুন</button>
-            </div>
-
-            <!-- প্রোডাক্ট ১০ -->
-            <div class="product-card">
-                <img src="https://via.placeholder.com/300x200/2ecc71/ffffff?text=Product+10" alt="প্রোডাক্ট ১০" class="product-image">
-                <h3 class="product-title">ডেস্ক ল্যাম্প</h3>
-                <p class="product-description">LED, এডজাস্টেবল ব্রাইটness</p>
-                <div class="product-price">৳ ৫৫০</div>
-                <button class="order-btn" onclick="orderProduct('ডেস্ক ল্যাম্প', 550)">অর্ডার করুন</button>
+                <button class="order-btn" onclick="openOrderModal('সানগ্লাস', 350)">অর্ডার করুন</button>
             </div>
         </div>
 
         <!-- সাকসেস মেসেজ -->
         <div id="successMessage" class="success-message">
             ✅ অর্ডার সফলভাবে জমা হয়েছে! আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।
+        </div>
+
+        <!-- অর্ডার মডাল -->
+        <div id="orderModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeOrderModal()">&times;</span>
+                <h2 style="text-align: center; margin-bottom: 20px; color: #2c3e50;">অর্ডার ফর্ম</h2>
+                
+                <form onsubmit="submitOrder(event)">
+                    <input type="hidden" id="selectedProduct">
+                    <input type="hidden" id="selectedPrice">
+                    
+                    <div class="form-group">
+                        <label for="customerName">আপনার সম্পূর্ণ নাম *</label>
+                        <input type="text" id="customerName" required placeholder="আপনার নাম লিখুন">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerPhone">ফোন নম্বর *</label>
+                        <input type="tel" id="customerPhone" required placeholder="০১৭XXXXXXXX">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerEmail">ইমেইল (ঐচ্ছিক)</label>
+                        <input type="email" id="customerEmail" placeholder="yourname@gmail.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerAddress">সম্পূর্ণ ঠিকানা *</label>
+                        <textarea id="customerAddress" rows="3" required placeholder="জেলা, থানা, গ্রাম/রোড নম্বর, বাড়ি নম্বর"></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customerNote">বিশেষ নোট (ঐচ্ছিক)</label>
+                        <textarea id="customerNote" rows="2" placeholder="কোন বিশেষ নির্দেশনা থাকলে লিখুন..."></textarea>
+                    </div>
+                    
+                    <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 20px 0;">
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">অর্ডার সারমর্ম:</h4>
+                        <p id="orderSummary" style="margin: 0; color: #7f8c8d;"></p>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">📧 ইমেইল দ্বারা অর্ডার সম্পন্ন করুন</button>
+                </form>
+            </div>
         </div>
 
         <!-- ফুটার -->
@@ -284,73 +347,116 @@
     </div>
 
     <script>
-        function orderProduct(productName, price) {
-            // গ্রাহকের তথ্য সংগ্রহ
-            const customerName = prompt("আপনার সম্পূর্ণ নাম লিখুন:");
-            if (!customerName) return;
-            
-            const phone = prompt("আপনার ফোন নম্বর লিখুন:");
-            if (!phone) return;
-            
-            const address = prompt("আপনার সম্পূর্ণ ঠিকানা লিখুন (জেলা, থানা, গ্রাম/রোড নম্বর):");
-            if (!address) return;
-            
-            // অর্ডার তথ্য তৈরি
-            const orderDetails = `
-🛍️ **নতুন অর্ডার!**
+        // বর্তমান নির্বাচিত প্রোডাক্ট
+        let currentProduct = '';
+        let currentPrice = 0;
 
-📦 **পণ্যের নাম:** ${productName}
-💰 **দাম:** ৳ ${price}
-👤 **গ্রাহকের নাম:** ${customerName}
-📞 **ফোন নম্বর:** ${phone}
-🏠 **ঠিকানা:** ${address}
-📅 **অর্ডারের তারিখ:** ${new Date().toLocaleString('bn-BD')}
+        // মডাল ওপেন ফাংশন
+        function openOrderModal(productName, price) {
+            currentProduct = productName;
+            currentPrice = price;
+            
+            document.getElementById('selectedProduct').value = productName;
+            document.getElementById('selectedPrice').value = price;
+            document.getElementById('orderSummary').textContent = `${productName} - ৳ ${price}`;
+            document.getElementById('orderModal').style.display = 'block';
+            
+            // ফর্ম রিসেট
+            document.getElementById('customerName').value = '';
+            document.getElementById('customerPhone').value = '';
+            document.getElementById('customerEmail').value = '';
+            document.getElementById('customerAddress').value = '';
+            document.getElementById('customerNote').value = '';
+        }
+
+        // মডাল ক্লোজ ফাংশন
+        function closeOrderModal() {
+            document.getElementById('orderModal').style.display = 'none';
+        }
+
+        // অর্ডার সাবমিট ফাংশন
+        function submitOrder(event) {
+            event.preventDefault();
+            
+            const customerName = document.getElementById('customerName').value;
+            const customerPhone = document.getElementById('customerPhone').value;
+            const customerEmail = document.getElementById('customerEmail').value;
+            const customerAddress = document.getElementById('customerAddress').value;
+            const customerNote = document.getElementById('customerNote').value;
+            
+            // ইমেইল বডি তৈরি
+            const emailSubject = `নতুন অর্ডার - ${currentProduct}`;
+            const emailBody = `
+🛍️ *নতুন অর্ডার এর বিশদ বিবরণ*
+
+📦 *পণ্যের নাম:* ${currentProduct}
+💰 *দাম:* ৳ ${currentPrice}
+👤 *গ্রাহকের নাম:* ${customerName}
+📞 *ফোন নম্বর:* ${customerPhone}
+📧 *ইমেইল:* ${customerEmail || 'না দেয়া'}
+🏠 *ঠিকানা:* ${customerAddress}
+📝 *বিশেষ নোট:* ${customerNote || 'কোন নোট নেই'}
+⏰ *অর্ডারের তারিখ:* ${new Date().toLocaleString('bn-BD')}
+
+*দ্রুত গ্রাহকের সাথে যোগাযোগ করে অর্ডার কনফার্ম করুন!*
+
+---
+ইমরান এর অনলাইন শপ
+ফোন: ০১৭XXXXXXXX
             `.trim();
             
-            // WhatsApp এ পাঠানোর অপশন
-            const whatsappNumber = "8801XXXXXXXXX"; // আপনার ফোন নম্বর দিন
-            const whatsappMessage = encodeURIComponent(orderDetails);
-            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+            // ইমেইল URL তৈরি
+            const yourEmail = 'iimranhossenmaruf@gmail.com'; // 🔁 এইটা পরিবর্তন করুন
+            const mailtoLink = `mailto:${yourEmail}?subject=${encodeURIComponent(emailSubject)}&body=${encodeURIComponent(emailBody)}`;
             
-            // ইমেইল অপশন
-            const emailSubject = `নতুন অর্ডার - ${productName}`;
-            const emailBody = encodeURIComponent(orderDetails);
-            const emailUrl = `mailto:youremail@gmail.com?subject=${emailSubject}&body=${emailBody}`;
-            
-            // ইউজারকে অপশন দিন
-            const useWhatsApp = confirm(`অর্ডার সফল!\n\n${orderDetails}\n\nWhatsApp এ অর্ডার পাঠাতে "OK" চাপুন, অথবা "Cancel" চেপে ইমেইল অপশন ব্যবহার করুন।`);
-            
-            if (useWhatsApp) {
-                window.open(whatsappUrl, '_blank');
-            } else {
-                window.location.href = emailUrl;
-            }
+            // ইমেইল ক্লায়েন্ট ওপেন
+            window.location.href = mailtoLink;
             
             // সাকসেস মেসেজ দেখান
-            const successMessage = document.getElementById('successMessage');
-            successMessage.style.display = 'block';
-            successMessage.innerHTML = `✅ ${productName} - অর্ডার সফল! আমরা শীঘ্রই যোগাযোগ করব।`;
+            showSuccessMessage(customerName, customerPhone);
             
-            // ৫ সেকেন্ড পর মেসেজ হাইড
+            // মডাল বন্ধ করুন
+            closeOrderModal();
+        }
+
+        // সাকসেস মেসেজ ফাংশন
+        function showSuccessMessage(name, phone) {
+            const successMessage = document.getElementById('successMessage');
+            successMessage.innerHTML = `
+                ✅ <strong>ধন্যবাদ ${name}!</strong> আপনার অর্ডার সফলভাবে রেকর্ড হয়েছে।<br>
+                আমরা শীঘ্রই ${phone} নম্বরে যোগাযোগ করব।
+            `;
+            successMessage.style.display = 'block';
+            
+            // ১০ সেকেন্ড পর মেসেজ হাইড
             setTimeout(() => {
                 successMessage.style.display = 'none';
-            }, 5000);
+            }, 10000);
             
-            // কনসোলে লগ (ডিবাগিং এর জন্য)
+            // কনসোলে লগ
             console.log('নতুন অর্ডার:', {
-                product: productName,
-                price: price,
-                customer: customerName,
+                product: currentProduct,
+                price: currentPrice,
+                customer: name,
                 phone: phone,
-                address: address,
                 timestamp: new Date().toISOString()
             });
         }
-        
-        // পেজ লোড হলে মেসেজ
-        window.addEventListener('load', function() {
-            console.log('ওয়েবসাইট সফলভাবে লোড হয়েছে!');
+
+        // মডাল বাইরে ক্লিক করলে বন্ধ হওয়া
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target === modal) {
+                closeOrderModal();
+            }
+        }
+
+        // ESC কি প্রেস করলে মডাল বন্ধ
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeOrderModal();
+            }
         });
     </script>
 </body>
-      </html>
+</html>
